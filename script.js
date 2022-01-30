@@ -1,11 +1,10 @@
 
 
 class paciente  {
-    constructor(nombre, edad, sexo, peso, estatura)
+    constructor(nombre, edad, peso, estatura)
     {
         this.nombre = nombre,
         this.edad = edad,
-        this.sexo = sexo,
         this.peso = peso,
         this.estatura = estatura;
     }
@@ -14,26 +13,37 @@ class paciente  {
 
  function valores () {
     alert("Calculemos tu Indice de Masa Corporal");
-     peso = prompt("Cual es tu peso?");
-      while ( peso < 3 ) {
-        peso = prompt("Introduce tu peso correcto");
+
+    nombrePaciente = prompt("Primero, Como te llamas?");
+    console.log(nombrePaciente);
+
+    edadPaciente = parseFloat(prompt("Cual es tu edad?", "0"))
+    while (edadPaciente < 0 || edadPaciente > 100) {
+        edadPaciente = parseFloat("Introduce tu edad correcta")
+    }
+    console.log(edadPaciente);
+
+    pesoPaciente = parseFloat(prompt("Cual es tu peso?"));
+      while ( pesoPaciente < 3 || pesoPaciente > 150 ) {
+        pesoPaciente = parseFloat(prompt("Introduce tu peso correcto"));
      }
-     estatura = prompt("Cual es tu estatura?");
+
+     estaturaPaciente = parseFloat(prompt("Cual es tu estatura?"));
      estaturaMetros ();
-     while ( estatura < 0.3 ) {
-        estatura = prompt("Introduce tu estatura correcta");
+     while ( estaturaPaciente < 0.3 ) {
+        estaturaPaciente = parseFloat(prompt("Introduce tu estatura correcta"));
      }
  }
 
  function estaturaMetros () {
-     if (estatura > 2.2 ) {
-         estatura = estatura/100;
-         console.log("estatura");
+     if (estaturaPaciente > 2.2 ) {
+         estaturaPaciente = estaturaPaciente/100;
+         console.log(estaturaPaciente);
      }
  }
 
  function calculoImc() {
-     indiceMasaC = peso/(estatura*estatura);     
+     indiceMasaC = pesoPaciente/(estaturaPaciente*estaturaPaciente);     
      indiceMasaC = Math.round((indiceMasaC + Number.EPSILON) * 100) / 100;
      console.log(indiceMasaC)
 }
@@ -62,11 +72,17 @@ function evaluarImc () {
 }
 
 
+
 var indiceMc = document.getElementById("indiceMc");
 
 indiceMc.addEventListener("click", function () {
     valores();
     calculoImc();
     evaluarImc();
-    console.log(peso, estatura, indiceMasaC);
+    
+    paciente1 = new paciente (nombrePaciente, edadPaciente, pesoPaciente, estaturaPaciente);
+    console.log(paciente1);
 });
+
+  
+
