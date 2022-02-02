@@ -1,5 +1,5 @@
 
-
+// constructor pacientes
 class paciente  {
     constructor(nombre, edad, peso, estatura)
     {
@@ -10,7 +10,7 @@ class paciente  {
     }
 }
 
-
+// funcion obtener valores
  function valores () {
     alert("Calculemos tu Indice de Masa Corporal");
 
@@ -35,6 +35,7 @@ class paciente  {
      }
  }
 
+//  funcion convertir estatura a metros
  function estaturaMetros () {
      if (estaturaPaciente > 2.2 ) {
          estaturaPaciente = estaturaPaciente/100;
@@ -42,12 +43,14 @@ class paciente  {
      }
  }
 
+//  funcion calculo de masa corporal
  function calculoImc() {
      indiceMasaC = pesoPaciente/(estaturaPaciente*estaturaPaciente);     
      indiceMasaC = Math.round((indiceMasaC + Number.EPSILON) * 100) / 100;
      console.log(indiceMasaC)
 }
 
+// funcion comunicar resultado del calculo
 function evaluarImc () {
     console.log("Tu indice de masa corporal es de: " + indiceMasaC);
     if (indiceMasaC <= 18.49 ){
@@ -72,17 +75,29 @@ function evaluarImc () {
 }
 
 
+// array de pacientes
+const pacientes = [];
 
+
+// codigo manipular DOM
 var indiceMc = document.getElementById("indiceMc");
-
 indiceMc.addEventListener("click", function () {
     valores();
     calculoImc();
     evaluarImc();
-    
-    paciente1 = new paciente (nombrePaciente, edadPaciente, pesoPaciente, estaturaPaciente);
-    console.log(paciente1);
+
+// nuevo objeto pacientes
+    datoPaciente = new paciente (nombrePaciente, edadPaciente, pesoPaciente, estaturaPaciente);
+    console.log(datoPaciente);
+
+    pacientes.push(datoPaciente);
+ 
+    console.log(pacientes);
 });
 
-  
+
+
+
+
+
 
