@@ -15,6 +15,7 @@ class paciente  {
     alert("Calculemos tu Indice de Masa Corporal");
 
     nombrePaciente = prompt("Primero, Como te llamas?");
+    
     console.log(nombrePaciente);
 
     edadPaciente = parseFloat(prompt("Cual es tu edad?", "0"))
@@ -80,7 +81,7 @@ const pacientes = [];
 
 
 // codigo manipular DOM
-var indiceMc = document.getElementById("indiceMc");
+var indiceMc = document.getElementById("calcular");
 indiceMc.addEventListener("click", function () {
     valores();
     calculoImc();

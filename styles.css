@@ -71,7 +71,7 @@ ul {
 
 .topnav a:hover { 
   background: rgba(0, 136, 0, 0.658);
-  color: black;
+  color: rgb(255, 255, 255);
 }
 
 .topnav a.active {
@@ -168,7 +168,7 @@ hr {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  border-radius: 50px;
+  border-radius: 20px;
 
   
 }
@@ -186,8 +186,6 @@ hr {
 }
 
 
-
-
 .home-section h1 {
   margin: 0;
   font-size: 2em;
@@ -201,7 +199,7 @@ hr {
   font-size: 2em;
   color: rgb(255, 164, 59);
   text-align: center;
-  
+  font-weight: bolder;
 }
 
 
@@ -213,7 +211,7 @@ hr {
 }
 
 .btn {
-  color: #696868;
+  color: #ffffff;
 }
 
 .blktext {
@@ -221,7 +219,7 @@ hr {
 }
 
 .btn:hover {
-  color: rgb(109, 109, 109);
+  color: #ffffff;;
   -webkit-transform: scale(1.2);
           transform: scale(1.2);
   -webkit-transition: -webkit-transform 630ms ease-in-out;
@@ -229,6 +227,7 @@ hr {
   transition: transform 630ms ease-in-out;
   transition: transform 630ms ease-in-out, -webkit-transform 630ms ease-in-out;
   cursor: pointer;
+  font-weight: bolder;
 }
 
 /* Career section styling */
@@ -239,6 +238,10 @@ hr {
     margin: 0;
   padding-bottom: 20px;
 }
+/*.career-content{
+ padding-left: 30px;
+ padding-right: 0px ;
+}*/
 
 .career-content h2 {
   font-size: 2em;
@@ -302,6 +305,7 @@ hr {
   transition: -webkit-transform 630ms ease-in-out;
   transition: transform 630ms ease-in-out;
   transition: transform 630ms ease-in-out, -webkit-transform 630ms ease-in-out;
+  cursor: pointer;
 }
 
 .projects-grid h3 {
@@ -450,14 +454,15 @@ hr {
 
 .links a i {
   font-size: 3rem;
-  color: #00c0e2;
+  color: #ffffff;
 }
 
 .sign {
+  text-decoration: none;
   text-align: center;
   margin-top: 30px;
   font-size: 10px;
-  color: #616161;
+  color: #ff0000;
 }
 
 .btn-secondary {
@@ -471,7 +476,7 @@ hr {
 }
 
 .btn-secondary:hover {
-  background-color: rgba(255, 0, 0, 0);
+  background-color: rgb(255, 0, 0);
 }
 
 /* media queries */
@@ -520,16 +525,21 @@ hr {
     color: white;
   }
   to {
-    color: #ff8400;
+    color: #ffae57;
   }
 }
 
-@keyframes color_change {
+.glow2 {
+  max-width: 80vw;
+  -webkit-animation: color_change2 2s infinite alternate;
+  animation: color_change2 2s infinite alternate;
+}
+@keyframes color_change2 {
   from {
-    color: white;
+    color: #ff8400;
   }
   to {
-    color: #ff8200;
+    color: #ffc07c;
   }
 }
 
