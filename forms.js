@@ -35,6 +35,8 @@ enviar.addEventListener("click", function (e) {
     console.log(pacientes);
     
     e.preventDefault()
+    Swal.fire('Any fool can use a computer')
+
      });
 
 //  funcion convertir estatura a metros
@@ -54,9 +56,12 @@ function calculoImc() {
 function evaluarImc () {
     console.log("Tu indice de masa corporal es de: " + indiceMasaC);
     if (indiceMasaC <= 18.49 ){
+        
         alert("Tu indice de masa corporal es: " + indiceMasaC +", te encuentras Bajo de Peso, Agendemos una Cita.");
         console.log("Tu indice de masa corporal es: " + indiceMasaC +", te encuentras Bajo de Peso, Agendemos una Cita.");
     } else if (indiceMasaC >18.49 && indiceMasaC <= 24.99) {
+         
+        
         alert("Tu indice de masa corporal es: " + indiceMasaC +", te encuentras con un peso normal, sigamos cuidandolo.");
         console.log("Tu indice de masa corporal es: " + indiceMasaC +", te encuentras con un peso normal, sigamos cuidandolo.")
     } else if (indiceMasaC >=25 && indiceMasaC <= 29.99) {
@@ -77,3 +82,10 @@ function evaluarImc () {
 // array de pacientes
 const pacientes = [];
 
+
+Swal.fire({
+    icon: 'success',
+    title: 'OK...',
+    text: 'prueba ok',
+    footer: '<a href="">Why do I have this issue?</a>'
+  })
