@@ -9,15 +9,14 @@ class paciente  {
     }
 }
 
-
-
-const enviar = document.getElementById("submit")
-enviar.addEventListener("click", function (e) {  
+// ejecutar evaluacion de IMC
+const botonImc = document.getElementById("calculoImc")
+botonImc.addEventListener("click", function (e) {  
     
      nombrePaciente = document.getElementById("nombrep").value
      apellidoPaciente = document.getElementById("apellido").value
      document.getElementsByName("sexo").forEach(radio => {if (radio.checked){sexoPaciente = radio.value}});   
-     console.log(sexoPaciente);
+     console.log( sexoPaciente );
      edadPaciente = parseFloat(document.getElementById("edad").value)
      pesoPaciente = parseFloat(document.getElementById("peso").value)     
      estaturaPaciente = parseFloat(document.getElementById("estatura").value) 
@@ -39,6 +38,54 @@ enviar.addEventListener("click", function (e) {
 
      });
 
+// ejecutar calculo de calorias
+     const botonCaloria = document.getElementById("calculoCaloria")
+     botonCaloria.addEventListener("click", function (e) {  
+         
+          nombrePaciente = document.getElementById("nombrep").value
+          apellidoPaciente = document.getElementById("apellido").value
+          document.getElementsByName("sexo").forEach(radio => {if (radio.checked){sexoPaciente = radio.value}});   
+          console.log (sexoPaciente);
+          edadPaciente = parseFloat(document.getElementById("edad").value)
+          pesoPaciente = parseFloat(document.getElementById("peso").value)     
+          estaturaPaciente = parseFloat(document.getElementById("estatura").value) 
+           
+         
+          calculoCalorias ();
+          console.log(caloriasPaciente);
+   
+ 
+     
+    //  nuevo objeto pacientes
+         nombreCompleto = `${nombrePaciente} ${apellidoPaciente}`
+         datoPaciente = new paciente (nombreCompleto, sexoPaciente, edadPaciente, pesoPaciente, estaturaPaciente);
+         console.log(datoPaciente);
+         pacientes.push(datoPaciente); 
+         console.log(pacientes);
+         
+         e.preventDefault()
+          
+     
+          });
+
+// funcion calcular calorias
+
+function calculoCalorias ()  {
+     if (sexoPaciente = "masculino" ) {
+         caloriasPaciente = 66.473 + (13.752*pesoPaciente) + (5.003*estaturaPaciente) - (6.775 * edadPaciente) }
+     else if (sexoPaciente = "femenino") 
+     { caloriasPaciente = 655.096 + (9.563*pesoPaciente) + (1.850*estaturaPaciente) -(4.676 * edadPaciente);
+    }
+
+    Swal.fire({
+        icon: 'success',
+        title: `${nombrePaciente} !`,
+        text: ` Segun tus datos, necesitas ${caloriasPaciente.toFixed(2)} calorias diariamente, te ayudo a obtenerlas! .`,
+        footer: '<a href="index.html#workMe">Agenda una cita aquí</a>'
+      })
+}
+     
+
 //  funcion convertir estatura a metros
 function estaturaMetros () {
     estaturaPaciente = estaturaPaciente/100;
@@ -55,8 +102,7 @@ function calculoImc() {
 // funcion comunicar resultado del calculo
 function evaluarImc () {
     console.log("Tu indice de masa corporal es de: " + indiceMasaC);
-    if (indiceMasaC <= 18.49 ){
-        
+    if (indiceMasaC <= 18.49 ){        
         Swal.fire({
             icon: 'info',
             title: `Bueno ${nombrePaciente} !`,
