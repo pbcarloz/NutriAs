@@ -35,7 +35,7 @@ enviar.addEventListener("click", function (e) {
     console.log(pacientes);
     
     e.preventDefault()
-    Swal.fire('Any fool can use a computer')
+     
 
      });
 
@@ -57,24 +57,58 @@ function evaluarImc () {
     console.log("Tu indice de masa corporal es de: " + indiceMasaC);
     if (indiceMasaC <= 18.49 ){
         
-        alert("Tu indice de masa corporal es: " + indiceMasaC +", te encuentras Bajo de Peso, Agendemos una Cita.");
+        Swal.fire({
+            icon: 'info',
+            title: `Bueno ${nombrePaciente} !`,
+            text: `Tu indice de masa corporal es de: ${indiceMasaC} necesitas un poco mas de peso, agendemos una cita para mejorar.`,
+            footer: '<a href="index.html#workMe">Agenda una cita aquí</a>'
+          })
         console.log("Tu indice de masa corporal es: " + indiceMasaC +", te encuentras Bajo de Peso, Agendemos una Cita.");
     } else if (indiceMasaC >18.49 && indiceMasaC <= 24.99) {
-         
-        
-        alert("Tu indice de masa corporal es: " + indiceMasaC +", te encuentras con un peso normal, sigamos cuidandolo.");
-        console.log("Tu indice de masa corporal es: " + indiceMasaC +", te encuentras con un peso normal, sigamos cuidandolo.")
+        Swal.fire({
+            icon: 'success',
+            title: `Muy Bien ${nombrePaciente} !`,
+            text: `Tu indice de masa corporal es de: ${indiceMasaC} te encuentras con un peso normal, sigamos cuidandolo.`,
+            footer: '<a href="index.html#workMe">Agenda una cita aquí</a>'
+          })
+             console.log("Tu indice de masa corporal es: " + indiceMasaC +", te encuentras con un peso normal, sigamos cuidandolo.")
     } else if (indiceMasaC >=25 && indiceMasaC <= 29.99) {
-        alert("Tu indice de masa corporal es: " + indiceMasaC +", te encuentras con sobrepeso, Agendemos una Cita.");
-        console.log("Tu indice de masa corporal es: " + indiceMasaC +", te encuentras con sobrepeso, Agendemos una cita")
+
+        Swal.fire({
+            icon: 'info',
+            title: `Bueno ${nombrePaciente} !`,
+            text: `Tu indice de masa corporal es de: ${indiceMasaC} te encuentras con sobrepeso, agendemos una cita para mejorar.`,
+            footer: '<a href="index.html#workMe">Agenda una cita aquí</a>'
+          })
+           console.log("Tu indice de masa corporal es: " + indiceMasaC +", te encuentras con sobrepeso, Agendemos una cita")
     } else if (indiceMasaC >=30 && indiceMasaC <= 34.99) {
-        alert("Tu indice de masa corporal es: " + indiceMasaC +", te encuentras obesidad leve, Agendemos una Cita.");
+
+        Swal.fire({
+            icon: 'warning',
+            title: `Oh No ${nombrePaciente} !`,
+            text: `Tu indice de masa corporal es de: ${indiceMasaC} te encuentras con obesidad leve, agendemos una cita para mejorar.`,
+            footer: '<a href="index.html#workMe">Agenda una cita aquí</a>'
+          })
+        
         console.log("Tu indice de masa corporal es: " + indiceMasaC +", te encuentras con obesidad leve, Agendemos una cita.")
     } else if (indiceMasaC >=35 && indiceMasaC <= 39.99) {
-        alert("Tu indice de masa corporal es: " + indiceMasaC +", te encuentras con obesidad media, Agendemos una Cita.");
+
+        Swal.fire({
+            icon: 'error',
+            title: `:( ${nombrePaciente} !`,
+            text: `Tu indice de masa corporal es de: ${indiceMasaC} te encuentras con obesidad media, agendemos una cita para mejorar.`,
+            footer: '<a href="index.html#workMe">Agenda una cita aquí</a>'
+          })
+       
         console.log("Tu indice de masa corporal es: " + indiceMasaC +", te encuentras con obesidad media, Agendemos una cita.")
     } else if (indiceMasaC >=40) {
-        alert("Tu indice de masa corporal es: " + indiceMasaC +", te encuentras con obesidad morbida, Agendemos una Cita.");
+
+        Swal.fire({
+            icon: 'error',
+            title: `:( ${nombrePaciente} !`,
+            text: `Tu indice de masa corporal es de: ${indiceMasaC} te encuentras con obesidad morbida, agendemos una cita para mejorar.`,
+            footer: '<a href="index.html#workMe">Agenda una cita aquí</a>'
+          })
         console.log("Tu indice de masa corporal es: " + indiceMasaC +", te encuentras con obesidad morbida, Agendemos una cita.")
     }
 }
@@ -83,9 +117,3 @@ function evaluarImc () {
 const pacientes = [];
 
 
-Swal.fire({
-    icon: 'success',
-    title: 'OK...',
-    text: 'prueba ok',
-    footer: '<a href="">Why do I have this issue?</a>'
-  })
