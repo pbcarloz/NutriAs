@@ -59,45 +59,44 @@
     <section class="career-section" id="experiencia">
         <div class="career-content">
             <h2 class="glow">Evaluate Rapidamente !</h2>
-            <!-- <img src="media/imc.jpg" alt="indice de masa corporal" class="img-thumbnail" > -->
-            <p> Ingresemos tus Datos y Evaluemos !
-            </p>
-
-            <form action="" method="get" id="form">
-                <div>
+            <div class="card-header">
+                <h5>Ingresa Tus Datos</h4>
+            </div>
+            <form action="" method="get" id="form" class="card-body">
+                <div class="form-group">
                     <label for="nombrep">Nombre: </label>
                     <input type="text" id="nombrep" name="nombrep" placeholder="Ingresa tu nombre" required>
                 </div>
-                <div>
+                <div class="form-group">
                     <label for="apellido">Apellido: </label>
                     <input type="text" id="apellido" name="apellido" placeholder="Ingresa tu apellido" required>
                 </div>
-                <div>
+                <div class="form-group">
                     <label for="sexo">Sexo: </label><br>
                     <input type="radio" id="masculino" name="sexo" value="masculino">
                     <label for="masculino">Masculino</label><br> 
                     <input type="radio" id="femenino" name="sexo" value="femenino">
                     <label for="femenino">Femenino</label> <br>
-                </div>
+                </div >
 
-                <div>
+                <div class="form-group">
                     <label for="edad">Edad: </label>
                     <input type="number" id="edad" name="edad" placeholder="0" size="2" min="1" max="99"   required>
                 </div>
                 
-                <div>
+                <div class="form-group">
                     <label for="peso">Peso: </label>
                     <input type="number" id="peso" name="peso" placeholder="Kilos" size="2" min="1" max="150"   required>
-                </div>
+                </div  >
 
-                <div>
+                <div class="form-group">
                     <label for="estatura">Estatura: </label>
                     <input type="number" id="estatura" name="estatura" placeholder="cm" size="3" min="30" max="220"   required>
                 </div>
-                <button type="" id="calculoImc">Calcular IMC</button>
-                <button type="" id="calculoCaloria">Calcular Calorias</button>
-                <button type="" id="pesoTeorico">Peso Teorico</button>
-                <button type="reset">Restablecer</button>
+                <button type="" id="calculoImc" class="btn btn-primary">Calcular IMC</button>
+                <button type="" id="calculoCaloria" class="btn btn-primary">Calcular Calorias</button>
+                <button type="" id="pesoTeorico" class="btn btn-primary">Peso Teorico</button>
+                <button type="reset" class="btn btn-primary">Restablecer</button>
             </form>
 
              
