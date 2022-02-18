@@ -44,7 +44,7 @@ botonImc.addEventListener("click", function (e) {
          
           nombrePaciente = document.getElementById("nombrep").value
           apellidoPaciente = document.getElementById("apellido").value
-          document.getElementsByName("sexo").forEach(radio => {if (radio.checked){sexoPaciente = radio.value}});   
+          document.getElementsByName("sexo").forEach(radio => { if (radio.checked){sexoPaciente = radio.value}});   
           console.log (sexoPaciente);
           edadPaciente = parseFloat(document.getElementById("edad").value)
           pesoPaciente = parseFloat(document.getElementById("peso").value)     
@@ -68,14 +68,46 @@ botonImc.addEventListener("click", function (e) {
      
           });
 
+
+// ejecutar calculo de peso teorico
+const botonPesoTeorico = document.getElementById("pesoTeorico")
+botonPesoTeorico.addEventListener("click", function (e) {  
+    
+     nombrePaciente = document.getElementById("nombrep").value
+     apellidoPaciente = document.getElementById("apellido").value
+     document.getElementsByName("sexo").forEach(radio => {if (radio.checked){sexoPaciente = radio.value}});   
+     console.log (sexoPaciente);
+     edadPaciente = parseFloat(document.getElementById("edad").value)
+     pesoPaciente = parseFloat(document.getElementById("peso").value)     
+     estaturaPaciente = parseFloat(document.getElementById("estatura").value) 
+      
+    
+     calculoPesoTeorico ();
+     console.log(pesoTeorico);
+
+
+
+//  nuevo objeto pacientes
+    nombreCompleto = `${nombrePaciente} ${apellidoPaciente}`
+    datoPaciente = new paciente (nombreCompleto, sexoPaciente, edadPaciente, pesoPaciente, estaturaPaciente);
+    console.log(datoPaciente);
+    pacientes.push(datoPaciente); 
+    console.log(pacientes);
+    
+    e.preventDefault()
+     
+
+     });
+
 // funcion calcular calorias
 
 function calculoCalorias ()  {
-     if (sexoPaciente = "masculino" ) {
-         caloriasPaciente = 66.473 + (13.752*pesoPaciente) + (5.003*estaturaPaciente) - (6.775 * edadPaciente) }
-     else if (sexoPaciente = "femenino") 
-     { caloriasPaciente = 655.096 + (9.563*pesoPaciente) + (1.850*estaturaPaciente) -(4.676 * edadPaciente);
-    }
+     if (sexoPaciente === "masculino" ) {
+         caloriasPaciente = 66.473 + (13.752*pesoPaciente) + (5.003*estaturaPaciente) - (6.775 * edadPaciente);
+      }
+     else if (sexoPaciente === "femenino") { 
+         caloriasPaciente = 655.096 + (9.563*pesoPaciente) + (1.850*estaturaPaciente) - (4.676 * edadPaciente);
+      }
 
     Swal.fire({
         icon: 'success',
@@ -83,6 +115,22 @@ function calculoCalorias ()  {
         text: ` Segun tus datos, necesitas ${caloriasPaciente.toFixed(2)} calorias diariamente, te ayudo a obtenerlas! .`,
         footer: '<a href="index.html#workMe">Agenda una cita aquí</a>'
       })
+}
+
+
+// funcion calcular peso teorico
+function calculoPesoTeorico ()  {
+        estaturaMetros();           
+        pesoTeoricoMin = (estaturaPaciente * estaturaPaciente )* 18.5 ;     
+        pesoTeoricoMax = (estaturaPaciente * estaturaPaciente )* 24.9 ;
+   
+
+   Swal.fire({
+       icon: 'success',
+       title: `${nombrePaciente} !`,
+       text: ` Segun tus datos, debes pesar al menos: ${pesoTeoricoMin.toFixed(2)} kilos,  y como maximo puedes pesar: ${pesoTeoricoMax.toFixed(2)} te ayudo a cumplirlo! `,
+       footer: '<a href="index.html#workMe">Agenda una cita aquí</a>'
+     })
 }
      
 
