@@ -9,6 +9,31 @@ class paciente  {
     }
 }
 
+// agregar informacion al html
+
+function publicResult () {
+    const listaResultado = document.getElementById("lista-resultados");
+    const element = document.createElement('div');
+    element.innerHTML = `
+        <div class = "card">
+            <div class="card-body">
+                <strong>Nombre Paciente: </strong> ${nombreCompleto}
+            </div>
+            <div class="card-body">
+                <strong>Edad: </strong> ${edadPaciente}
+            </div>
+            <div class="card-body">
+                <strong>Peso: </strong> ${pesoPaciente}
+            </div>
+             <div class="card-body">
+                <strong>Resultado: </strong> como lo paso para cada boton?
+            </div>
+            
+        </div>
+    `
+    listaResultado.appendChild(element);
+}
+
 // ejecutar evaluacion de IMC
 const botonImc = document.getElementById("calculoImc")
 botonImc.addEventListener("click", function (e) {  
@@ -33,8 +58,9 @@ botonImc.addEventListener("click", function (e) {
     pacientes.push(datoPaciente); 
     console.log(pacientes);
     
-    e.preventDefault()
-     
+    publicResult ();
+    e.preventDefault();
+    
 
      });
 
@@ -62,7 +88,8 @@ botonImc.addEventListener("click", function (e) {
          console.log(datoPaciente);
          pacientes.push(datoPaciente); 
          console.log(pacientes);
-         
+
+         publicResult ();
          e.preventDefault()
           
      
@@ -94,6 +121,7 @@ botonPesoTeorico.addEventListener("click", function (e) {
     pacientes.push(datoPaciente); 
     console.log(pacientes);
     
+    publicResult ();
     e.preventDefault()
      
 
