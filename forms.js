@@ -33,6 +33,39 @@ function publicResult () {
     `
     listaResultado.appendChild(element);
 }
+ 
+
+
+const lista = document.getElementById("lista-resultados");
+ 
+fetch('pacientes.json')
+    .then( (res) => res.json()).then( (data) => {
+ 
+        data.forEach((paciente) => {
+
+        const element = document.createElement('div');
+        element.innerHTML = `
+        <div class = "card">
+            <div class="card-body">
+                <strong>Nombre Paciente: </strong> ${[paciente.nombre]}
+            </div>
+            <div class="card-body">
+                <strong>Edad: </strong> ${paciente.edad}
+            </div>
+            <div class="card-body">
+                <strong>Codigo: </strong> ${paciente.id}
+            </div>
+             <div class="card-body">
+                <strong>Resultado: </strong> puedo alimentar mi archivo pacientes.json con los datos que ingrese en mi formulario?
+            </div>
+            
+        </div>
+    `
+    lista.appendChild(element);
+
+        })
+    })
+
 
 // ejecutar evaluacion de IMC
 const botonImc = document.getElementById("calculoImc")
