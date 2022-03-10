@@ -1,73 +1,65 @@
 class paciente  {
-    constructor(nombre, sexo, edad, peso, estatura)
+    constructor(nombre, sexo, edad, peso, estatura, resultado)
     {
         this.nombre = nombre,
         this.sexo = sexo,
         this.edad = edad,
         this.peso = peso,
         this.estatura = estatura;
+        this.resultado = resultado;
     }
 }
 
 // agregar informacion al html
-
 function publicResult () {
     const listaResultado = document.getElementById("lista-resultados");
     const element = document.createElement('div');
     element.innerHTML = `
-        <div class = "card">
+        <div class = "card text-center mb-3">
             <div class="card-body">
                 <strong>Nombre Paciente: </strong> ${nombreCompleto}
-            </div>
-            <div class="card-body">
                 <strong>Edad: </strong> ${edadPaciente}
-            </div>
-            <div class="card-body">
                 <strong>Peso: </strong> ${pesoPaciente}
-            </div>
-             <div class="card-body">
-                <strong>Resultado: </strong> como lo paso para cada boton?
-            </div>
-            
+                <strong>Resultado: </strong> ${resultado}
+            </div>            
         </div>
-    `
+    `;
     listaResultado.appendChild(element);
-}
- 
+} 
 
 
-const lista = document.getElementById("lista-resultados");
+// const lista = document.getElementById("lista-resultados"); 
+// fetch('pacientes.json')
+//     .then( (res) => res.json()).then( (data) => {
  
-fetch('pacientes.json')
-    .then( (res) => res.json()).then( (data) => {
- 
-        data.forEach((paciente) => {
+//         data.forEach((paciente) => {
 
-        const element = document.createElement('div');
-        element.innerHTML = `
-        <div class = "card">
-            <div class="card-body">
-                <strong>Nombre Paciente: </strong> ${[paciente.nombre]}
-            </div>
-            <div class="card-body">
-                <strong>Edad: </strong> ${paciente.edad}
-            </div>
-            <div class="card-body">
-                <strong>Codigo: </strong> ${paciente.id}
-            </div>
-             <div class="card-body">
-                <strong>Resultado: </strong> puedo alimentar mi archivo pacientes.json con los datos que ingrese en mi formulario?
-            </div>
+//         const element = document.createElement('div');
+//         element.innerHTML = `
+//         <div class = "card">
+//             <div class="card-body">
+//                 <strong>Nombre Paciente: </strong> ${[paciente.nombre]}
+//             </div>
+//             <div class="card-body">
+//                 <strong>Edad: </strong> ${paciente.edad}
+//             </div>
+//             <div class="card-body">
+//                 <strong>Codigo: </strong> ${paciente.id}
+//             </div>
+//              <div class="card-body">
+//                 <strong>Resultado: </strong> puedo alimentar mi archivo pacientes.json con los datos que ingrese en mi formulario?
+//             </div>
             
-        </div>
-    `
-    lista.appendChild(element);
+//         </div>
+//     `
+//     lista.appendChild(element);
 
-        })
-    })
+//         })
+//     })
 
 
 // ejecutar evaluacion de IMC
+
 const botonImc = document.getElementById("calculoImc")
 botonImc.addEventListener("click", function (e) {  
     
@@ -81,17 +73,17 @@ botonImc.addEventListener("click", function (e) {
       
     
     estaturaMetros(); 
-    calculoImc();
     evaluarImc();
 
 // nuevo objeto pacientes
     nombreCompleto = `${nombrePaciente} ${apellidoPaciente}`
-    datoPaciente = new paciente (nombreCompleto, sexoPaciente, edadPaciente, pesoPaciente, estaturaPaciente);
+    datoPaciente = new paciente (nombreCompleto, sexoPaciente, edadPaciente, pesoPaciente, estaturaPaciente, resultado);
     console.log(datoPaciente);
     pacientes.push(datoPaciente); 
     console.log(pacientes);
     
     publicResult ();
+    document.getElementById('form').reset();
     e.preventDefault();
     
 
@@ -111,19 +103,22 @@ botonImc.addEventListener("click", function (e) {
            
          
           calculoCalorias ();
+          
           console.log(caloriasPaciente);
    
  
      
     //  nuevo objeto pacientes
          nombreCompleto = `${nombrePaciente} ${apellidoPaciente}`
-         datoPaciente = new paciente (nombreCompleto, sexoPaciente, edadPaciente, pesoPaciente, estaturaPaciente);
+         datoPaciente = new paciente (nombreCompleto, sexoPaciente, edadPaciente, pesoPaciente, estaturaPaciente, resultado);
          console.log(datoPaciente);
          pacientes.push(datoPaciente); 
          console.log(pacientes);
 
          publicResult ();
+         document.getElementById('form').reset();
          e.preventDefault()
+         
           
      
           });
@@ -155,6 +150,7 @@ botonPesoTeorico.addEventListener("click", function (e) {
     console.log(pacientes);
     
     publicResult ();
+    document.getElementById('form').reset();
     e.preventDefault()
      
 
@@ -176,6 +172,8 @@ function calculoCalorias ()  {
         text: ` Segun tus datos, necesitas ${caloriasPaciente.toFixed(2)} calorias diariamente, te ayudo a obtenerlas! .`,
         footer: '<a href="index.html#workMe">Agenda una cita aquí</a>'
       })
+
+      resultado = caloriasPaciente.toFixed(2);
 }
 
 
@@ -192,6 +190,7 @@ function calculoPesoTeorico ()  {
        text: ` Segun tus datos, debes pesar al menos: ${pesoTeoricoMin.toFixed(2)} kilos,  y como maximo puedes pesar: ${pesoTeoricoMax.toFixed(2)} te ayudo a cumplirlo! `,
        footer: '<a href="index.html#workMe">Agenda una cita aquí</a>'
      })
+     resultado = `Peso Minimo ${pesoTeoricoMin.toFixed(2)} y Peso Maximo ${pesoTeoricoMax.toFixed(2)}`
 }
      
 
@@ -200,16 +199,14 @@ function estaturaMetros () {
     estaturaPaciente = estaturaPaciente/100;
 }
 
-//  funcion calculo de masa corporal
-function calculoImc() {
+// funcion comunicar resultado del calculo
+function evaluarImc () {
+
     indiceMasaC = pesoPaciente/(estaturaPaciente*estaturaPaciente);     
     indiceMasaC = Math.round((indiceMasaC + Number.EPSILON) * 100) / 100;
     console.log(indiceMasaC)
-}
+    resultado = indiceMasaC.toFixed(2);
 
-
-// funcion comunicar resultado del calculo
-function evaluarImc () {
     console.log("Tu indice de masa corporal es de: " + indiceMasaC);
     if (indiceMasaC <= 18.49 ){        
         Swal.fire({

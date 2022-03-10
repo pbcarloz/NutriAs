@@ -16,7 +16,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
  <!-- Sweet Alert CDN -->
- <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 <!-- FONT LIBRARY CDN -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css">
@@ -53,52 +53,68 @@
         </a>
       </div>
 </div>
-    <!-- HOME SECTION -->
+ 
 
-    <!-- career section -->
+    <!-- FORM SECTION -->
     <section class="career-section" id="experiencia">
         <div class="career-content">
             <h2 class="glow">Evaluate Rapidamente !</h2>
+        <div class="card m-3">
             <div class="card-header">
                 <h5>Ingresa Tus Datos</h4>
             </div>
-            <form action="" method="get" id="form" class="card-body">
-                <div class="form-group">
-                    <label for="nombrep">Nombre: </label>
-                    <input type="text" id="nombrep" name="nombrep" placeholder="Ingresa tu nombre" required>
+            <form method="get" id="form" class="card-body">
+                <div class="form-group row mb-2">
+                    <label for="nombrep" class="col-sm-2 col-form-label" >Nombre</label>
+                    <div class="col-sm-4">
+                    <input type="text" id="nombrep" name="nombrep" placeholder="Ingresa tu nombre" required class="form-control">
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label for="apellido">Apellido: </label>
-                    <input type="text" id="apellido" name="apellido" placeholder="Ingresa tu apellido" required>
+                <div class="form-group row mb-2">
+                    <label for="apellido" class="col-sm-2 col-form-label" >Apellido</label>
+                    <div class="col-sm-4">
+                    <input type="text" id="apellido" name="apellido" placeholder="Ingresa tu apellido" required class="form-control">
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label for="sexo">Sexo: </label><br>
-                    <input type="radio" id="masculino" name="sexo" value="masculino">
-                    <label for="masculino">Masculino</label><br> 
-                    <input type="radio" id="femenino" name="sexo" value="femenino">
-                    <label for="femenino">Femenino</label> <br>
-                </div >
-
-                <div class="form-group">
-                    <label for="edad">Edad: </label>
-                    <input type="number" id="edad" name="edad" placeholder="0" size="2" min="1" max="99"   required>
+            <fieldset class="form-group mb-2">
+            <div class="row">
+                    <legend class="col-form-label col-sm-2 pt-0 ">Sexo</legend>
+                        <div class="col-sm-10"> 
+                            <div class="form-check">
+                                <input type="radio" id="masculino" name="sexo" value="masculino" class="form-check-input">
+                                <label for="masculino" class="form-check-label">Masculino</label> 
+                            </div>
+                            <div class="form-check">
+                                <input type="radio" id="femenino" name="sexo" value="femenino" class="form-check-input">
+                                <label for="femenino" class="form-check-label">Femenino</label> 
+                            </div >
+                        </div>
+            </div>
+            </fieldset>
+                <div class="form-group row mb-2">
+                    <label for="edad" class="col-sm-2 col-form-label">Edad</label>
+                    <div class="col-sm-1"> 
+                    <input type="number" id="edad" name="edad" placeholder="0" size="2" min="1" max="99" required class="form-control">
+                    </div>
+                </div>                
+                <div class="form-group row mb-2">
+                    <label for="peso" class="col-sm-2 col-form-label">Peso</label>
+                    <div class="col-sm-1"> 
+                    <input type="number" id="peso" name="peso" placeholder="Kilos" size="2" min="1" max="150" required class="form-control">
+                    </div>
                 </div>
-                
-                <div class="form-group">
-                    <label for="peso">Peso: </label>
-                    <input type="number" id="peso" name="peso" placeholder="Kilos" size="2" min="1" max="150"   required>
-                </div  >
-
-                <div class="form-group">
-                    <label for="estatura">Estatura: </label>
-                    <input type="number" id="estatura" name="estatura" placeholder="cm" size="3" min="30" max="220"   required>
+                <div class="form-group row mb-2">
+                    <label for="estatura" class="col-sm-2 col-form-label">Estatura</label>
+                    <div class="col-sm-1"> 
+                    <input type="number" id="estatura" name="estatura" placeholder="cm" size="3" min="30" max="220"   required class="form-control">
+                    </div>
                 </div>
-                <button type="" id="calculoImc" class="btn btn-primary">Calcular IMC</button>
-                <button type="" id="calculoCaloria" class="btn btn-primary">Calcular Calorias</button>
-                <button type="" id="pesoTeorico" class="btn btn-primary">Peso Teorico</button>
+                <button type="submit" id="calculoImc" class="btn btn-primary">Calcular IMC</button>
+                <button type="submit" id="calculoCaloria" class="btn btn-primary">Calcular Calorias</button>
+                <button type="submit" id="pesoTeorico" class="btn btn-primary">Peso Teorico</button>
                 <button type="reset" class="btn btn-primary">Restablecer</button>
             </form>
-
+        </div>
              
 
         </div>
@@ -106,12 +122,12 @@
 
   
         
-    <!-- Who am isection -->
+    <!-- Lista Resultados -->
     <section class="career-section" id="">
         <div class="career-content">
             <h2 class="glow">Mis Resultados</h2>
             <div id="lista-resultados"></div>
-
+            
         </div>
     </section>
 
