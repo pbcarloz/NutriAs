@@ -11,7 +11,7 @@ class paciente  {
 }
 
 // agregar informacion al html
-function publicResult () {
+function publicResult (tipo) {
     const listaResultado = document.getElementById("lista-resultados");
     const element = document.createElement('div');
     element.innerHTML = `
@@ -20,7 +20,7 @@ function publicResult () {
                 <strong>Nombre Paciente: </strong> ${nombreCompleto}
                 <strong>Edad: </strong> ${edadPaciente}
                 <strong>Peso: </strong> ${pesoPaciente}
-                <strong>Resultado: </strong> ${resultado}
+                <strong>${tipo}: </strong>  ${resultado}
             </div>            
         </div>
     `;
@@ -82,18 +82,32 @@ botonImc.addEventListener("click", function (e) {
     pacientes.push(datoPaciente); 
     console.log(pacientes);
     
-    publicResult ();
-    document.getElementById('form').reset();
+    publicResult ("Indice de Masa Corporal");
+    //document.getElementById('form').reset();
     e.preventDefault();
     
 
      });
 
+
+//Validar Campos Formulario
+
+const validarInput = () =>{ 
+    if(nombrePaciente === '' || apellidoPaciente === '' || sexoPaciente.value === null || edadPaciente === '' || pesoPaciente === '' || estaturaPaciente === '') {
+        const datosOk = false;
+    } else { 
+        const datosOk = true;  
+    }
+    
+}
+
+
+
 // ejecutar calculo de calorias
      const botonCaloria = document.getElementById("calculoCaloria")
      botonCaloria.addEventListener("click", function (e) {  
          
-          nombrePaciente = document.getElementById("nombrep").value
+          nombrePaciente = document.getElementById("nombrep").value          
           apellidoPaciente = document.getElementById("apellido").value
           document.getElementsByName("sexo").forEach(radio => { if (radio.checked){sexoPaciente = radio.value}});   
           console.log (sexoPaciente);
@@ -101,23 +115,20 @@ botonImc.addEventListener("click", function (e) {
           pesoPaciente = parseFloat(document.getElementById("peso").value)     
           estaturaPaciente = parseFloat(document.getElementById("estatura").value) 
            
-         
-          calculoCalorias ();
           
-          console.log(caloriasPaciente);
-   
- 
-     
-    //  nuevo objeto pacientes
+          calculoCalorias ();
+             
+//  nuevo objeto pacientes
          nombreCompleto = `${nombrePaciente} ${apellidoPaciente}`
          datoPaciente = new paciente (nombreCompleto, sexoPaciente, edadPaciente, pesoPaciente, estaturaPaciente, resultado);
          console.log(datoPaciente);
          pacientes.push(datoPaciente); 
          console.log(pacientes);
 
-         publicResult ();
-         document.getElementById('form').reset();
+         publicResult ("Calorias Diarias");
          e.preventDefault()
+        
+          
          
           
      
@@ -149,8 +160,8 @@ botonPesoTeorico.addEventListener("click", function (e) {
     pacientes.push(datoPaciente); 
     console.log(pacientes);
     
-    publicResult ();
-    document.getElementById('form').reset();
+    publicResult ("Peso Teorico");
+    //document.getElementById('form').reset();
     e.preventDefault()
      
 
