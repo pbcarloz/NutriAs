@@ -61,7 +61,7 @@ const publicResult = (tipo) => {
                 <strong>Peso: </strong> ${pesoPaciente} kilos.
                 <strong>Estatura: </strong> ${estaturaPaciente} mts.
                 <strong>${tipo} : </strong>  ${resultado}.
-                <a class = "btn btn-sm btn-danger" name = "delete">Borrar</a>
+                <a class = "btn btn-sm btn-outline-warning m-1" name = "delete" >Borrar</a>
             </div>            
         </div>
     `;
