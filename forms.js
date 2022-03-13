@@ -1,3 +1,4 @@
+// Constructor Datos del Paciente
 class paciente  {
     constructor(nombre, sexo, edad, peso, estatura, resultado)
     {
@@ -10,22 +11,9 @@ class paciente  {
     }
 }
 
-// agregar informacion al html
-function publicResult (tipo) {
-    const listaResultado = document.getElementById("lista-resultados");
-    const element = document.createElement('div');
-    element.innerHTML = `
-        <div class = "card text-center mb-3">
-            <div class="card-body">
-                <strong>Nombre Paciente: </strong> ${nombreCompleto}
-                <strong>Edad: </strong> ${edadPaciente}
-                <strong>Peso: </strong> ${pesoPaciente}
-                <strong>${tipo}: </strong>  ${resultado}
-            </div>            
-        </div>
-    `;
-    listaResultado.appendChild(element);
-} 
+
+// Declara array de pacientes
+const pacientes = [];
 
 
 // const lista = document.getElementById("lista-resultados"); 
@@ -58,116 +46,186 @@ function publicResult (tipo) {
 //     })
 
 
-// ejecutar evaluacion de IMC
 
-const botonImc = document.getElementById("calculoImc")
+// Funcion para agregar informacion al DOM
+const publicResult = (tipo) => {
+    const listaResultado = document.getElementById("lista-resultados");
+    const element = document.createElement('div');
+    element.innerHTML = `
+        <div class = "card text-center mb-3">
+            <div class="card-body">
+                <strong>Nombre Paciente: </strong> ${nombreCompleto}
+                <strong>Edad: </strong> ${edadPaciente}
+                <strong>Peso: </strong> ${pesoPaciente}
+                <strong>${tipo} : </strong>  ${resultado}
+            </div>            
+        </div>
+    `;
+    listaResultado.appendChild(element);
+} 
+
+//Validar Campos Formulario
+let datosOk = '';
+const validarInput = () => {
+    const regName =  /^[a-zA-Z ]+$/ ; 
+    if (
+        nombrePaciente === '' || 
+        !nombrePaciente.match(regName) ||
+        apellidoPaciente === '' || 
+        !apellidoPaciente.match(regName) ||
+        sexoPaciente.value === '' || 
+        isNaN(edadPaciente) || 
+        edadPaciente <= 0 ||
+        isNaN(pesoPaciente)  || 
+        pesoPaciente <= 3 || 
+        isNaN(estaturaPaciente) || 
+        estaturaPaciente <= 30
+        ) {
+       datosOk = false
+       console.log("Datos Incorrectos", datosOk)
+
+    } 
+    else {
+        datosOk = true;
+        console.log("Datos Correctos", datosOk)
+    }
+}   
+
+//Funcion alertar error en los datos del formulario
+const errorDatos = () => {
+    Swal.fire({
+        icon: 'error',
+        title: `:( Datos Incorrectos !`,
+        text: `Verifica que tus datos esten correctos`,
+        footer: ''
+      })  
+};
+
+
+
+// Listener para  evaluacion del indice de masa Corporal
+
+const botonImc = document.getElementById("calculoImc");
 botonImc.addEventListener("click", function (e) {  
-    
+
+// Obtencion de Datos del Formulario  
      nombrePaciente = document.getElementById("nombrep").value
      apellidoPaciente = document.getElementById("apellido").value
+     sexoPaciente = '';
      document.getElementsByName("sexo").forEach(radio => {if (radio.checked){sexoPaciente = radio.value}});   
-     console.log( sexoPaciente );
      edadPaciente = parseFloat(document.getElementById("edad").value)
      pesoPaciente = parseFloat(document.getElementById("peso").value)     
      estaturaPaciente = parseFloat(document.getElementById("estatura").value) 
       
-    
+//Ejecuta Funcion para Validar Datos del Formulario, devuelve la variable "datosOk" como true o false
+    validarInput();
+
+//Si la variables DatosOk es True, ejecuta la funcion de calculo    
+    if ( datosOk === true ) {
     estaturaMetros(); 
     evaluarImc();
 
-// nuevo objeto pacientes
+//  Se crea nuevo objeto  de paciente
     nombreCompleto = `${nombrePaciente} ${apellidoPaciente}`
     datoPaciente = new paciente (nombreCompleto, sexoPaciente, edadPaciente, pesoPaciente, estaturaPaciente, resultado);
     console.log(datoPaciente);
+// Se integra el objeto paciente al array de pacientes
     pacientes.push(datoPaciente); 
     console.log(pacientes);
-    
+// Se publica DOM resultado del calculo
     publicResult ("Indice de Masa Corporal");
-    //document.getElementById('form').reset();
-    e.preventDefault();
-    
-
-     });
-
-
-//Validar Campos Formulario
-
-const validarInput = () =>{ 
-    if(nombrePaciente === '' || apellidoPaciente === '' || sexoPaciente.value === null || edadPaciente === '' || pesoPaciente === '' || estaturaPaciente === '') {
-        const datosOk = false;
-    } else { 
-        const datosOk = true;  
     }
-    
-}
+
+// Si la variables DatosOk es False, se alerta
+    else {
+     errorDatos();
+    }    
+
+    e.preventDefault();
+
+});
 
 
 
-// ejecutar calculo de calorias
-     const botonCaloria = document.getElementById("calculoCaloria")
-     botonCaloria.addEventListener("click", function (e) {  
-         
+// Listener para calculo de calorias
+const botonCaloria = document.getElementById("calculoCaloria")
+botonCaloria.addEventListener("click", function (e) {  
+
+// Obtencion de Datos del Formulario        
           nombrePaciente = document.getElementById("nombrep").value          
           apellidoPaciente = document.getElementById("apellido").value
+          sexoPaciente = '';
           document.getElementsByName("sexo").forEach(radio => { if (radio.checked){sexoPaciente = radio.value}});   
-          console.log (sexoPaciente);
           edadPaciente = parseFloat(document.getElementById("edad").value)
           pesoPaciente = parseFloat(document.getElementById("peso").value)     
           estaturaPaciente = parseFloat(document.getElementById("estatura").value) 
            
-          
+//Ejecuta Funcion para Validar Datos del Formulario, devuelve la variable "datosOk" como true o false
+          validarInput();
+
+//Si la variables DatosOk es True, ejecuta la funcion de calculo
+        if ( datosOk === true ) {
           calculoCalorias ();
-             
-//  nuevo objeto pacientes
+
+//  Se crea nuevo objeto  de paciente
          nombreCompleto = `${nombrePaciente} ${apellidoPaciente}`
          datoPaciente = new paciente (nombreCompleto, sexoPaciente, edadPaciente, pesoPaciente, estaturaPaciente, resultado);
          console.log(datoPaciente);
+// Se integra el objeto paciente al array de pacientes
          pacientes.push(datoPaciente); 
          console.log(pacientes);
-
+// Se publica DOM resultado del calculo
          publicResult ("Calorias Diarias");
-         e.preventDefault()
-        
-          
-         
-          
-     
-          });
+        } 
+// Si la variables DatosOk es False, se alerta
+        else {
+         errorDatos();
+        }    
+
+        e.preventDefault()
+
+});
 
 
-// ejecutar calculo de peso teorico
+// Listener calculo de peso teorico
 const botonPesoTeorico = document.getElementById("pesoTeorico")
 botonPesoTeorico.addEventListener("click", function (e) {  
-    
-     nombrePaciente = document.getElementById("nombrep").value
-     apellidoPaciente = document.getElementById("apellido").value
-     document.getElementsByName("sexo").forEach(radio => {if (radio.checked){sexoPaciente = radio.value}});   
-     console.log (sexoPaciente);
-     edadPaciente = parseFloat(document.getElementById("edad").value)
-     pesoPaciente = parseFloat(document.getElementById("peso").value)     
-     estaturaPaciente = parseFloat(document.getElementById("estatura").value) 
-      
-    
-     calculoPesoTeorico ();
-     console.log(pesoTeorico);
 
+// Obtencion de Datos del Formulario   
+        nombrePaciente = document.getElementById("nombrep").value
+        apellidoPaciente = document.getElementById("apellido").value
+        sexoPaciente = '';
+        document.getElementsByName("sexo").forEach(radio => {if (radio.checked){sexoPaciente = radio.value}});   
+        edadPaciente = parseFloat(document.getElementById("edad").value)
+        pesoPaciente = parseFloat(document.getElementById("peso").value)     
+        estaturaPaciente = parseFloat(document.getElementById("estatura").value) 
+        
+//Ejecuta Funcion para Validar Datos del Formulario, devuelve la variable "datosOk" como true o false
+        validarInput();
 
+//Si la variables DatosOk es True, ejecuta la funcion de calculo
+        if ( datosOk === true ) {
+        calculoPesoTeorico ();
 
-//  nuevo objeto pacientes
-    nombreCompleto = `${nombrePaciente} ${apellidoPaciente}`
-    datoPaciente = new paciente (nombreCompleto, sexoPaciente, edadPaciente, pesoPaciente, estaturaPaciente);
-    console.log(datoPaciente);
-    pacientes.push(datoPaciente); 
-    console.log(pacientes);
-    
-    publicResult ("Peso Teorico");
-    //document.getElementById('form').reset();
-    e.preventDefault()
+//  Se crea nuevo objeto  de paciente
+        nombreCompleto = `${nombrePaciente} ${apellidoPaciente}`
+        datoPaciente = new paciente (nombreCompleto, sexoPaciente, edadPaciente, pesoPaciente, estaturaPaciente);
+        console.log(datoPaciente);
+// Se integra el objeto paciente al array de pacientes
+        pacientes.push(datoPaciente); 
+        console.log(pacientes);
+// Se publica DOM resultado del calculo        
+        publicResult ("Peso Teorico");
+        }
+ // Si la variables DatosOk es False, se alerta
+        else {
+        errorDatos();
+        }
+        e.preventDefault()
      
+});
 
-     });
-
-// funcion calcular calorias
+// funcion para calcular calorias
 
 function calculoCalorias ()  {
      if (sexoPaciente === "masculino" ) {
@@ -180,11 +238,11 @@ function calculoCalorias ()  {
     Swal.fire({
         icon: 'success',
         title: `${nombrePaciente} !`,
-        text: ` Segun tus datos, necesitas ${caloriasPaciente.toFixed(2)} calorias diariamente, te ayudo a obtenerlas! .`,
+        text: ` Segun tus datos, necesitas ${caloriasPaciente.toFixed(0)} calorias diariamente, te ayudo a obtenerlas! .`,
         footer: '<a href="index.html#workMe">Agenda una cita aquí</a>'
       })
 
-      resultado = caloriasPaciente.toFixed(2);
+      resultado = caloriasPaciente.toFixed(0);
 }
 
 
@@ -198,10 +256,10 @@ function calculoPesoTeorico ()  {
    Swal.fire({
        icon: 'success',
        title: `${nombrePaciente} !`,
-       text: ` Segun tus datos, debes pesar al menos: ${pesoTeoricoMin.toFixed(2)} kilos,  y como maximo puedes pesar: ${pesoTeoricoMax.toFixed(2)} te ayudo a cumplirlo! `,
+       text: ` Segun tus datos, debes pesar al menos: ${pesoTeoricoMin.toFixed(1)} kilos,  y como maximo puedes pesar: ${pesoTeoricoMax.toFixed(1)} te ayudo a cumplirlo! `,
        footer: '<a href="index.html#workMe">Agenda una cita aquí</a>'
      })
-     resultado = `Peso Minimo ${pesoTeoricoMin.toFixed(2)} y Peso Maximo ${pesoTeoricoMax.toFixed(2)}`
+     resultado = `Peso Minimo ${pesoTeoricoMin.toFixed(1)} y Peso Maximo ${pesoTeoricoMax.toFixed(1)}`
 }
      
 
@@ -210,8 +268,9 @@ function estaturaMetros () {
     estaturaPaciente = estaturaPaciente/100;
 }
 
-// funcion comunicar resultado del calculo
+// funcion para alertar resultado del calculo de indice de masa corporal
 function evaluarImc () {
+
 
     indiceMasaC = pesoPaciente/(estaturaPaciente*estaturaPaciente);     
     indiceMasaC = Math.round((indiceMasaC + Number.EPSILON) * 100) / 100;
@@ -276,7 +335,5 @@ function evaluarImc () {
     }
 }
 
-// array de pacientes
-const pacientes = [];
 
 
