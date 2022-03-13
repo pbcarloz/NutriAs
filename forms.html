@@ -59,7 +59,7 @@
     <section class="career-section" id="experiencia">
         <div class="career-content">
             <h2 class="glow">Evaluate Rapidamente !</h2>
-        <div class="card m-3">
+        <div class="card m-4">
             <div class="card-header">
                 <h5>Ingresa Tus Datos</h4>
             </div>
@@ -67,7 +67,7 @@
                 <div class="form-group row mb-2">
                     <label for="nombrep" class="col-sm-2 col-form-label" >Nombre</label>
                     <div class="col-sm-4">
-                    <input type="text" pattern="[a-zA-Z]{5,}" id="nombrep" name="nombrep" placeholder="Ingresa tu nombre" required class="form-control">
+                    <input type="text" id="nombrep" name="nombrep" placeholder="Ingresa tu nombre" required class="form-control">
                     </div>
                 </div>
                 <div class="form-group row mb-2">
@@ -81,11 +81,11 @@
                     <legend class="col-form-label col-sm-2 pt-0 ">Sexo</legend>
                         <div class="col-sm-10"> 
                             <div class="form-check">
-                                <input type="radio" id="masculino" name="sexo" value="masculino" class="form-check-input">
+                                <input type="radio" id="masculino" name="sexo" value="Masculino" class="form-check-input">
                                 <label for="masculino" class="form-check-label">Masculino</label> 
                             </div>
                             <div class="form-check">
-                                <input type="radio" id="femenino" name="sexo" value="femenino" class="form-check-input">
+                                <input type="radio" id="femenino" name="sexo" value="Femenino" class="form-check-input">
                                 <label for="femenino" class="form-check-label">Femenino</label> 
                             </div >
                         </div>
@@ -109,10 +109,10 @@
                     <input type="number" id="estatura" name="estatura" placeholder="cm" size="3" min="30" max="220"   required class="form-control">
                     </div>
                 </div>
-                <button type="submit" id="calculoImc" class="btn btn-primary">Calcular IMC</button>
-                <button type="submit" id="calculoCaloria" class="btn btn-primary">Calcular Calorias</button>
-                <button type="submit" id="pesoTeorico" class="btn btn-primary">Peso Teorico</button>
-                <button type="reset" class="btn btn-primary">Restablecer</button>
+                <button type="submit" id="calculoImc" class="btn btn-success m-1">Calcular IMC</button>
+                <button type="submit" id="calculoCaloria" class="btn btn-success m-1">Calcular Calorias</button>
+                <button type="submit" id="pesoTeorico" class="btn btn-success m-1">Peso Teorico</button>
+                <button type="reset" class="btn btn-outline-warning m-1">Restablecer</button>
             </form>
         </div>
              
@@ -125,7 +125,6 @@
     <!-- Lista Resultados -->
     <section class="career-section" id="">
         <div class="career-content">
-            <h2 class="glow">Mis Resultados</h2>
             <div id="lista-resultados"></div>
             
         </div>

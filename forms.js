@@ -52,17 +52,29 @@ const publicResult = (tipo) => {
     const listaResultado = document.getElementById("lista-resultados");
     const element = document.createElement('div');
     element.innerHTML = `
-        <div class = "card text-center mb-3">
+        <h2 class="glow">Resultado</h2>
+        <div class = "card text-center m-4">
             <div class="card-body">
-                <strong>Nombre Paciente: </strong> ${nombreCompleto}
-                <strong>Edad: </strong> ${edadPaciente}
-                <strong>Peso: </strong> ${pesoPaciente}
-                <strong>${tipo} : </strong>  ${resultado}
+                <strong>Nombre Paciente: </strong> ${nombreCompleto}.
+                <strong>Edad: </strong> ${edadPaciente} años.
+                <strong>Sexo: </strong> ${sexoPaciente}.
+                <strong>Peso: </strong> ${pesoPaciente} kilos.
+                <strong>Estatura: </strong> ${estaturaPaciente} mts.
+                <strong>${tipo} : </strong>  ${resultado}.
+                <a class = "btn btn-sm btn-danger" name = "delete">Borrar</a>
             </div>            
         </div>
     `;
     listaResultado.appendChild(element);
 } 
+
+//borrar resultado 
+document.getElementById('lista-resultados').addEventListener('click', function(e){
+    console.log(e.target);
+    if (e.target.name === 'delete') {
+        e.target.parentElement.parentElement.parentElement.remove();
+    }
+})
 
 //Validar Campos Formulario
 let datosOk = '';
@@ -228,10 +240,10 @@ botonPesoTeorico.addEventListener("click", function (e) {
 // funcion para calcular calorias
 
 function calculoCalorias ()  {
-     if (sexoPaciente === "masculino" ) {
+     if (sexoPaciente === "Masculino" ) {
          caloriasPaciente = 66.473 + (13.752*pesoPaciente) + (5.003*estaturaPaciente) - (6.775 * edadPaciente);
       }
-     else if (sexoPaciente === "femenino") { 
+     else if (sexoPaciente === "Femenino") { 
          caloriasPaciente = 655.096 + (9.563*pesoPaciente) + (1.850*estaturaPaciente) - (4.676 * edadPaciente);
       }
 
