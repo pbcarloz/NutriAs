@@ -1,8 +1,9 @@
 // Constructor Datos del Paciente
 class paciente  {
-    constructor(nombre, sexo, edad, peso, estatura, resultado)
+    constructor(nombre, email, sexo, edad, peso, estatura, resultado)
     {
         this.nombre = nombre,
+        this.email = email,
         this.sexo = sexo,
         this.edad = edad,
         this.peso = peso,
@@ -85,6 +86,10 @@ const validarInput = () => {
         !nombrePaciente.match(regName) ||
         apellidoPaciente === '' || 
         !apellidoPaciente.match(regName) ||
+        emailPaciente === '' ||
+        !String(emailPaciente).toLowerCase().match(
+            /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)  
+            || 
         sexoPaciente.value === '' || 
         isNaN(edadPaciente) || 
         edadPaciente <= 0 ||
@@ -123,6 +128,7 @@ botonImc.addEventListener("click", function (e) {
 // Obtencion de Datos del Formulario  
      nombrePaciente = document.getElementById("nombrep").value
      apellidoPaciente = document.getElementById("apellido").value
+     emailPaciente = document.getElementById("email").value
      sexoPaciente = '';
      document.getElementsByName("sexo").forEach(radio => {if (radio.checked){sexoPaciente = radio.value}});   
      edadPaciente = parseFloat(document.getElementById("edad").value)
@@ -139,14 +145,23 @@ botonImc.addEventListener("click", function (e) {
 
 //  Se crea nuevo objeto  de paciente
     nombreCompleto = `${nombrePaciente} ${apellidoPaciente}`
-    datoPaciente = new paciente (nombreCompleto, sexoPaciente, edadPaciente, pesoPaciente, estaturaPaciente, resultado);
+    datoPaciente = new paciente (nombreCompleto, emailPaciente, sexoPaciente, edadPaciente, pesoPaciente, estaturaPaciente, resultado);
     console.log(datoPaciente);
 // Se integra el objeto paciente al array de pacientes
     pacientes.push(datoPaciente); 
     console.log(pacientes);
 // Se publica DOM resultado del calculo
     publicResult ("Indice de Masa Corporal");
+
+    enviarMail("Indice de Masa Corporal");
+
+//Guarda informacion al local storage
+localStorage.setItem('Mis Datos', JSON.stringify(pacientes));
+
+         
     }
+
+
 
 // Si la variables DatosOk es False, se alerta
     else {
@@ -166,6 +181,7 @@ botonCaloria.addEventListener("click", function (e) {
 // Obtencion de Datos del Formulario        
           nombrePaciente = document.getElementById("nombrep").value          
           apellidoPaciente = document.getElementById("apellido").value
+          emailPaciente = document.getElementById("email").value
           sexoPaciente = '';
           document.getElementsByName("sexo").forEach(radio => { if (radio.checked){sexoPaciente = radio.value}});   
           edadPaciente = parseFloat(document.getElementById("edad").value)
@@ -181,13 +197,17 @@ botonCaloria.addEventListener("click", function (e) {
 
 //  Se crea nuevo objeto  de paciente
          nombreCompleto = `${nombrePaciente} ${apellidoPaciente}`
-         datoPaciente = new paciente (nombreCompleto, sexoPaciente, edadPaciente, pesoPaciente, estaturaPaciente, resultado);
+         datoPaciente = new paciente (nombreCompleto, emailPaciente, sexoPaciente, edadPaciente, pesoPaciente, estaturaPaciente, resultado);
          console.log(datoPaciente);
 // Se integra el objeto paciente al array de pacientes
          pacientes.push(datoPaciente); 
          console.log(pacientes);
 // Se publica DOM resultado del calculo
          publicResult ("Calorias Diarias");
+//Guarda informacion al local storage
+        localStorage.setItem('Mis Datos', JSON.stringify(pacientes))
+
+        enviarMail("Calorias Diarias");
         } 
 // Si la variables DatosOk es False, se alerta
         else {
@@ -206,6 +226,7 @@ botonPesoTeorico.addEventListener("click", function (e) {
 // Obtencion de Datos del Formulario   
         nombrePaciente = document.getElementById("nombrep").value
         apellidoPaciente = document.getElementById("apellido").value
+        emailPaciente = document.getElementById("email").value
         sexoPaciente = '';
         document.getElementsByName("sexo").forEach(radio => {if (radio.checked){sexoPaciente = radio.value}});   
         edadPaciente = parseFloat(document.getElementById("edad").value)
@@ -221,14 +242,20 @@ botonPesoTeorico.addEventListener("click", function (e) {
 
 //  Se crea nuevo objeto  de paciente
         nombreCompleto = `${nombrePaciente} ${apellidoPaciente}`
-        datoPaciente = new paciente (nombreCompleto, sexoPaciente, edadPaciente, pesoPaciente, estaturaPaciente);
+        datoPaciente = new paciente (nombreCompleto, emailPaciente, sexoPaciente, edadPaciente, pesoPaciente, estaturaPaciente);
         console.log(datoPaciente);
 // Se integra el objeto paciente al array de pacientes
         pacientes.push(datoPaciente); 
         console.log(pacientes);
 // Se publica DOM resultado del calculo        
         publicResult ("Peso Teorico");
+
+        enviarMail("Peso Teorico");
+//Guarda informacion al local storage
+        localStorage.setItem('Mis Datos', JSON.stringify(pacientes))
         }
+
+        
  // Si la variables DatosOk es False, se alerta
         else {
         errorDatos();
