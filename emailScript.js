@@ -1,4 +1,4 @@
-function enviarMail (tipo) {
+function enviarMail () {
     let tempParametros = {
         from_name: nombreCompleto,
         to_name:'Reynaldo' ,
