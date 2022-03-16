@@ -140,7 +140,7 @@ hr {
 /* Home section styling */
 .home-section {
   width: 100%;
-  min-height: 95vh;
+  min-height: 100%;
   background: url(media/home-back3.jpg) no-repeat center center/cover;
   padding: 20px;
   margin: 0;
@@ -231,9 +231,10 @@ hr {
   font-weight: bolder;
 }
 
-/* Career section styling */
+
+/* Experiencia styling */
 .career-section {
-  min-height: 300px;
+  min-height: 50%;
   background: rgb(255, 255, 255);
   display: flex;
   flex-direction: column;
@@ -330,7 +331,7 @@ hr {
 
 /* About me section styling */
 .myself-section{
-  min-height: 300px;
+  min-height: 50%;
   background: rgb(255, 255, 255);
   display: flex;
   flex-direction: column;
