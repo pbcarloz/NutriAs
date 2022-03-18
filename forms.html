@@ -42,8 +42,7 @@
 
 <div class="top">        
     <a href="#" class="title1">Nutritionist</a>
-    <div class="topnav" id="myTopnav">   
-       <!-- <a href="#projects">Vivir Bien</a>-->
+    <div class="topnav" id="myTopnav">
         <a href="index.html#experiencia">Mi experiencia</a>
         <a href="index.html#certificaciones">Certificaciones</a>
         <a href="index.html#evaluate">Evaluate</a>
@@ -56,14 +55,24 @@
  
 
     <!-- FORM SECTION -->
-    <section class="career-section" id="experiencia">
-        <div class="career-content">
-            <h2 class="glow">Evaluate Rapidamente !</h2>
-        <div class="card m-4">
-            <div class="card-header">
+    <section class="form-section" id="experiencia">
+        <div class="form-content">
+            <h2 class="glow2">Evaluate Rapidamente</h2>
+            <div class="form-section">
+                <p> 
+                    Si deseas saber rápidamente cual es tu Índice de Masa Corporal actual, calcular cuantas calorías necesitas ingerir diariamente o si te encuentras dentro de tu rango de peso adecuado, con esta aplicación podrás descubrirlo en segundos!
+                </p>
+                <p> 
+                    Y si te interesa podemos agendar una cita con la misma información que obtuviste. </p>
+                <p>
+                    Los datos que ingreses no son almacenados ni compartidos con nadie, por lo que no hay nada que preocuparse.
+                </p>    
+            </div>
+        <div class="card m-4 border-0">
+            <div class="card-header border-0">
                 <h5>Ingresa Tus Datos</h4>
             </div>
-            <form method="get" id="form" class="card-body">
+            <form method="get" id="form-container" class="card-body">
                 <div class="form-group row mb-2">
                     <label for="nombrep" class="col-sm-2 col-form-label" >Nombre</label>
                     <div class="col-sm-4">
@@ -106,13 +115,13 @@
                 <div class="form-group row mb-2">
                     <label for="peso" class="col-sm-2 col-form-label">Peso</label>
                     <div class="col-sm-1"> 
-                    <input type="number" id="peso" name="peso" placeholder="Kilos" size="2" min="1" max="150" required class="form-control">
+                    <input type="number" id="peso" name="peso" placeholder="Kg" size="2" min="1" max="150" required class="form-control">
                     </div>
                 </div>
                 <div class="form-group row mb-2">
                     <label for="estatura" class="col-sm-2 col-form-label">Estatura</label>
                     <div class="col-sm-1"> 
-                    <input type="number" id="estatura" name="estatura" placeholder="cm" size="3" min="30" max="220"   required class="form-control">
+                    <input type="number" id="estatura" name="estatura" placeholder="Cm" size="3" min="30" max="220"   required class="form-control">
                     </div>
                 </div>
                 <button type="submit" id="calculoImc" class="btn btn-success m-1">Calcular IMC</button>
@@ -125,32 +134,30 @@
 
         </div>
     </section>
-
-  
-        
+   
     <!-- Lista Resultados -->
-    <section class="career-section" id="">
-        <div class="career-content">
+    <section class="result-section" id="">
+        <div class="result-content">
             <div id="lista-resultados"></div>
-            
+           
         </div>
     </section>
 
 <!-- footer section-->
 <footer class="followMe" id="workMe">
-    <h2 class="glow">Te consulto !</h2>
+    <h2 class="glow2">Te consulto !</h2>
         <div class="links">
-            <a href="#" target="_blank">
-                <i class="fab fa-facebook-f btn"></i>
+            <a href="https://instagram.com/nutriologa_katyamarin" target="_blank">
+                <i class="fab fa-instagram btn"></i>
+            </a>
+            <a href="https://wa.me/522212142459" target="_blank">
+                <i class="fab fa-whatsapp btn"></i>
             </a>
             <a href="#" target="_blank">
-                <i class="fab fa-github btn"></i>
-            </a>
-            <a href="#" target="_blank">
-                <i class="fab fa-linkedin btn"></i>
+                <i class="fab fa-facebook btn"></i>
             </a>        
         </div>
-        <p class="sign" ><a href="#">Developed by Carlos Barcenas</a></p>
+        <p class="sign" ><a href="https://github.com/pbcarloz" class="sign" target="_blank">Developed by Pbcarloz</a></p>
 </footer>
     <!-- boostrap script -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>

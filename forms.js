@@ -22,7 +22,7 @@ const publicResult = (tipo) => {
     const listaResultado = document.getElementById("lista-resultados");
     const element = document.createElement('div');
     element.innerHTML = `
-        <h2 class="glow">${tipo}</h2>
+        <h2 class="glow2">${tipo}</h2>
         <div class = "card text-center m-4">
             <div class="card-body">
                 <strong>Nombre Paciente: </strong> ${nombreCompleto}.
