@@ -207,46 +207,56 @@ hr {
 /* footer section  */
 .followMe {
   margin-top: 30px;
-  background: rgba(0, 136, 0, 0.658);
-  padding: 35px 0;
+  background: #008800a8;
 }
 
-.followMe h2 {
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  text-align: center;
-  font-size: 2em;
-  margin: 3vh auto;
+.followMe .group-1 {
+  width: 100%;
+  max-width: 1200px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  padding-top: 20px;
 }
 
-.links {
-  display: -webkit-box;
-  display: -ms-flexbox;
+.followMe .group-1 figure {
+  width: 100%;
+  height: 100%;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  justify-content: center;
+  align-items: center;
 }
 
-.links a {
-  margin: 0 30px;
+.followMe .group-1 figure img {
+  width: 250px;
 }
 
-.links a i {
-  font-size: 3rem;
-  color: #ffffff;
+.followMe .group-1 .box p {
+  color:#202020;
+  margin: 20px 0;
 }
 
-.sign {
+.followMe .group-1 .social-net a {
+  display: inline-block;
   text-decoration: none;
+  font-size: 2em;
+  width: 55px;
+  height: 55px;
+  line-height: 55px;
+  color: #ebebeb;
+  background-color: #3c993c ;
+  border-radius: 25px;
+  margin: 20px 5px;
   text-align: center;
-  margin-top: 30px;
-  font-size: 10px;
-  color: #ffffff;
+  padding: 0;
+}
+
+.followMe .group-2 {
+  background-color: #3c993c ;
+  padding: 15px 10px;
+  text-align: center;
+  color: #ebebeb;
 }
 
 
@@ -291,6 +301,17 @@ hr {
   .form-content p {
     padding: 45px 40px 0px 40px;
   }
+}
+
+@media screen and (max-width: 875px) {
+
+  .followMe .group-1 {
+    width: 90%;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 5px;
+    padding-top: 10px;
+  }
+  
 }
 
 /* Color change -----------*/

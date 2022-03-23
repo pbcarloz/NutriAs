@@ -82,31 +82,7 @@ ul {
   display: none;
 }
 
-@media screen and (max-width: 800px) {
-  .topnav a:not(:first-child) {
-    display: none;
-  }
-  .topnav a.icon {
-    float: right;
-    display: block;
-  }
-}
 
-@media screen and (max-width: 800px) {
-  .topnav.responsive {
-    position: relative;
-  }
-  .topnav.responsive .icon {
-    position: absolute;
-    right: 0;
-    top: 0;
-  }
-  .topnav.responsive a {
-    float: none;
-    display: block;
-    text-align: left;
-  }
-}
 
 /* left nav styling */
 .nav-main ul {
@@ -305,11 +281,7 @@ hr {
   line-height: 1.5;
 }
 
-@media screen and (max-width:790px) {
-  .certificaciones-content {
-    flex-direction: column;
-  }
-}
+
 
 
 
@@ -400,67 +372,65 @@ hr {
   line-height: 1.5;
 }
 
-@media screen and (max-width:790px) {
-  .evaluate-content {
-    flex-direction: column;
-  }
-}
+
 
 /* footer section  */
 .followMe {
   margin-top: 30px;
-  background: rgba(0, 136, 0, 0.658);
-  padding: 35px 0;
+  background: #008800a8;
 }
 
-.followMe h2 {
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  text-align: center;
-  font-size: 2em;
-  margin: 3vh auto;
+.followMe .group-1 {
+  width: 100%;
+  max-width: 1200px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  padding-top: 20px;
 }
 
-.links {
-  display: -webkit-box;
-  display: -ms-flexbox;
+.followMe .group-1 figure {
+  width: 100%;
+  height: 100%;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  justify-content: center;
+  align-items: center;
 }
 
-.links a {
-  margin: 0 30px;
+.followMe .group-1 figure img {
+  width: 250px;
 }
 
-.links a i {
-  font-size: 3rem;
-  color: #ffffff;
+.followMe .group-1 .box p {
+  color:#202020;
+  margin: 20px 0;
 }
 
-.sign {
+.followMe .group-1 .social-net a {
+  display: inline-block;
   text-decoration: none;
+  font-size: 2em;
+  width: 55px;
+  height: 55px;
+  line-height: 55px;
+  color: #ebebeb;
+  background-color: #3c993c ;
+  border-radius: 25px;
+  margin: 20px 5px;
   text-align: center;
-  margin-top: 30px;
-  font-size: 10px;
-  color: #ffffff;
 }
 
-.btn-secondary {
-  background-color:  rgba(0, 136, 0, 0.507);
-  border-width: 0px;
+.followMe .group-2 {
+  background-color: #3c993c ;
+  padding: 15px 10px;
+  text-align: center;
+  color: #ebebeb;
 }
 
-.btn-secondary:hover {
-  background-color: rgb(255, 0, 0);
-}
 
-/* BOTON WHATSAPP */
+
+/* BOTON FLOTANTE WHATSAPP */
 .experiencia a i  {
   font-size: 2rem;
   position: fixed;
@@ -479,7 +449,6 @@ hr {
 
 /* Color change -----------*/
 
-
 .glow2 {
   max-width: 80vw;
   -webkit-animation: color_change2 2s infinite alternate;
@@ -492,4 +461,70 @@ hr {
   to {
     color: #ffc07c;
   }
+}
+
+
+/* MEDIA QUERIES */
+
+@media screen and (max-width: 800px) {
+  .topnav a:not(:first-child) {
+    display: none;
+  }
+  .topnav a.icon {
+    float: right;
+    display: block;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .topnav.responsive {
+    position: relative;
+  }
+  .topnav.responsive .icon {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+  .topnav.responsive a {
+    float: none;
+    display: block;
+    text-align: left;
+  }
+}
+
+@media screen and (max-width:790px) {
+  .career-section p {
+    width: 70%;
+    padding: 10px;
+    margin: 10px;
+    text-align: justify;
+    letter-spacing: 0.5px;
+    color: #3d3d3d;
+    font-size: 1em;
+    line-height: 1.2em;
+  }
+}
+
+
+@media screen and (max-width:790px) {
+  .certificaciones-content {
+    flex-direction: column;
+  }
+}
+
+@media screen and (max-width:790px) {
+  .evaluate-content {
+    flex-direction: column;
+  }
+}
+
+@media screen and (max-width: 875px) {
+
+  .followMe .group-1 {
+    width: 90%;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 5px;
+    padding-top: 10px;
+  }
+  
 }
