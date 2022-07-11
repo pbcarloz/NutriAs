@@ -238,7 +238,7 @@ botonConsulta.addEventListener("click", function (e) {
             icon: 'success',
             title: `Cita Enviada`,
             text: ` Con los datos que capturaste te contactare en breve! `,
-            footer: `<a href="https://wa.me/522212142459" target="_blank">Cita Por Whatsapp</a>`
+            footer: `<a href="https://wa.me/522222045888" target="_blank">Cita Por Whatsapp</a>`
           })
         }
         
@@ -265,7 +265,7 @@ function calculoCalorias ()  {
         icon: 'success',
         title: `${nombrePaciente} !`,
         text: ` Segun tus datos, necesitas ${caloriasPaciente.toFixed(0)} calorias diariamente, te ayudo a obtenerlas! .`,
-        footer: `<a href="https://wa.me/522212142459" target="_blank">Cita Por Whatsapp</a>`
+        footer: `<a href="https://wa.me/522222045888" target="_blank">Cita Por Whatsapp</a>`
       })
 
       resultado = caloriasPaciente.toFixed(0);
@@ -283,7 +283,7 @@ function calculoPesoTeorico ()  {
        icon: 'success',
        title: `${nombrePaciente} !`,
        text: ` Segun tus datos, debes pesar al menos: ${pesoTeoricoMin.toFixed(1)} kilos,  y como maximo puedes pesar: ${pesoTeoricoMax.toFixed(1)} te ayudo a cumplirlo! `,
-       footer: `<a href="https://wa.me/522212142459" target="_blank">Cita Por Whatsapp</a>`
+       footer: `<a href="https://wa.me/522222045888" target="_blank">Cita Por Whatsapp</a>`
      })
      resultado = `Peso Minimo ${pesoTeoricoMin.toFixed(1)} y Peso Maximo ${pesoTeoricoMax.toFixed(1)}`
 }
@@ -309,7 +309,7 @@ function evaluarImc () {
             icon: 'info',
             title: `Bueno ${nombrePaciente} !`,
             text: `Tu indice de masa corporal es de: ${indiceMasaC} necesitas un poco mas de peso, agendemos una cita para mejorar.`,
-            footer: `<a href="https://wa.me/522212142459" target="_blank">Cita Por Whatsapp</a>`
+            footer: `<a href="https://wa.me/522222045888" target="_blank">Cita Por Whatsapp</a>`
           })
         console.log("Tu indice de masa corporal es: " + indiceMasaC +", te encuentras Bajo de Peso, Agendemos una Cita.");
     } else if (indiceMasaC >18.49 && indiceMasaC <= 24.99) {
@@ -317,7 +317,7 @@ function evaluarImc () {
             icon: 'success',
             title: `Muy Bien ${nombrePaciente} !`,
             text: `Tu indice de masa corporal es de: ${indiceMasaC} te encuentras con un peso normal, sigamos cuidandolo.`,
-            footer: `<a href="https://wa.me/522212142459" target="_blank">Cita Por Whatsapp</a>`
+            footer: `<a href="https://wa.me/522222045888" target="_blank">Cita Por Whatsapp</a>`
           })
              console.log("Tu indice de masa corporal es: " + indiceMasaC +", te encuentras con un peso normal, sigamos cuidandolo.")
     } else if (indiceMasaC >=25 && indiceMasaC <= 29.99) {
@@ -326,7 +326,7 @@ function evaluarImc () {
             icon: 'info',
             title: `Bueno ${nombrePaciente} !`,
             text: `Tu indice de masa corporal es de: ${indiceMasaC} te encuentras con sobrepeso, agendemos una cita para mejorar.`,
-            footer: `<a href="https://wa.me/522212142459" target="_blank">Cita Por Whatsapp</a>`
+            footer: `<a href="https://wa.me/522222045888" target="_blank">Cita Por Whatsapp</a>`
           })
            console.log("Tu indice de masa corporal es: " + indiceMasaC +", te encuentras con sobrepeso, Agendemos una cita")
     } else if (indiceMasaC >=30 && indiceMasaC <= 34.99) {
@@ -335,7 +335,7 @@ function evaluarImc () {
             icon: 'warning',
             title: `Oh No ${nombrePaciente} !`,
             text: `Tu indice de masa corporal es de: ${indiceMasaC} te encuentras con obesidad leve, agendemos una cita para mejorar.`,
-            footer: `<a href="https://wa.me/522212142459" target="_blank">Cita Por Whatsapp</a>`
+            footer: `<a href="https://wa.me/522222045888" target="_blank">Cita Por Whatsapp</a>`
           })
         
         console.log("Tu indice de masa corporal es: " + indiceMasaC +", te encuentras con obesidad leve, Agendemos una cita.")
@@ -345,7 +345,7 @@ function evaluarImc () {
             icon: 'error',
             title: `:( ${nombrePaciente} !`,
             text: `Tu indice de masa corporal es de: ${indiceMasaC} te encuentras con obesidad media, agendemos una cita para mejorar.`,
-            footer: `<a href="https://wa.me/522212142459" target="_blank">Cita Por Whatsapp</a>`
+            footer: `<a href="https://wa.me/522222045888" target="_blank">Cita Por Whatsapp</a>`
           })
        
         console.log("Tu indice de masa corporal es: " + indiceMasaC +", te encuentras con obesidad media, Agendemos una cita.")
@@ -355,7 +355,7 @@ function evaluarImc () {
             icon: 'error',
             title: `:( ${nombrePaciente} !`,
             text: `Tu indice de masa corporal es de: ${indiceMasaC} te encuentras con obesidad morbida, agendemos una cita para mejorar.`,
-            footer: `<a href="https://wa.me/522212142459" target="_blank">Cita Por Whatsapp</a>`
+            footer: `<a href="https://wa.me/522222045888" target="_blank">Cita Por Whatsapp</a>`
           })
         console.log("Tu indice de masa corporal es: " + indiceMasaC +", te encuentras con obesidad morbida, Agendemos una cita.")
     }
